@@ -1,4 +1,12 @@
 .code_preview {
 	width: 784px;
 	margin-left: 16px;
+	display: flex;
+	flex-direction: column;
+	border-style: solid;
+	position: relative;
+	// max-height: 100vh;
+	max-height: calc(100vh - 32px);
+	background: #22221d;
+	border-radius: 8px;
 }

@@ -1,4 +1,9 @@
 .code_view {
-	background: #22221d;
 	border-radius: 0px 0px 8px 8px;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	max-height: inherit;
+	box-sizing: border-box;
+	overflow-y: scroll;
 }
