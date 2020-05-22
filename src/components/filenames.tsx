@@ -6,6 +6,7 @@ import { FileName } from "./filename";
 type FileNamesProps = {
 	selected_file: number;
 	files: string[];
+	changeSelected: (selected_file: number) => void;
 };
 
 export class FileNames extends Component<FileNamesProps> {
@@ -16,16 +17,19 @@ export class FileNames extends Component<FileNamesProps> {
 	}
 
 	renderFile(filename: string, index: number) {
+		let selected: boolean = false;
+
 		if (this.props.selected_file === index) {
-			return (
-				<FileName selected={true} key={index}>
-					{filename}
-				</FileName>
-			);
+			selected = true;
 		}
 
 		return (
-			<FileName selected={false} key={index}>
+			<FileName
+				changeSelected={this.props.changeSelected}
+				selected={selected}
+				key={index}
+				index={index}
+			>
 				{filename}
 			</FileName>
 		);

@@ -16,10 +16,18 @@ export class CodePreview extends Component<CodePreviewProps, CodePreviewState> {
 	constructor(props: CodePreviewProps) {
 		super(props);
 
+		this.changeSelected = this.changeSelected.bind(this);
+
 		this.state = {
 			files: ["index.jsx", "index.css"],
 			selected_file: 0,
 		};
+	}
+
+	changeSelected(selected_file: number) {
+		this.setState({
+			selected_file,
+		});
 	}
 
 	render() {
@@ -29,8 +37,9 @@ export class CodePreview extends Component<CodePreviewProps, CodePreviewState> {
 				<FileNames
 					files={this.state.files}
 					selected_file={this.state.selected_file}
+					changeSelected={this.changeSelected}
 				/>
-				<CodeView />
+				<CodeView selected_file={this.state.selected_file} />
 			</div>
 		);
 	}

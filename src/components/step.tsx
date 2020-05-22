@@ -3,6 +3,7 @@ import "./step.scss";
 
 type StepProps = {
 	index: number;
+	selected: number;
 };
 
 export class Step extends Component<StepProps> {

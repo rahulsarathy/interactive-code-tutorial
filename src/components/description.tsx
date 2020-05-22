@@ -4,7 +4,9 @@ import { Step } from "./step";
 
 type DescriptionProps = {};
 
-export class Description extends Component<DescriptionProps> {
+type DescriptionState = { selected: number };
+
+export class Description extends Component<DescriptionProps, DescriptionState> {
 	constructor(props: DescriptionProps) {
 		super(props);
 
@@ -40,7 +42,7 @@ export class Description extends Component<DescriptionProps> {
 						game.
 					</p>
 				</div>
-				<Step index={0}>
+				<Step selected={this.state.selected} index={0}>
 					<p className="step-header">Passing Data Through Props</p>
 					<p>
 						To get our feet wet, let’s try passing some data from
@@ -57,7 +59,7 @@ export class Description extends Component<DescriptionProps> {
 						a prop called value to the Square.
 					</p>
 				</Step>
-				<Step index={1}>
+				<Step selected={this.state.selected} index={1}>
 					<p>
 						{`Change Square’s render method to show that value by replacing`}{" "}
 						<code>{`{/* TODO */}`}</code> {`with `}
