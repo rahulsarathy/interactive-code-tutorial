@@ -3,12 +3,40 @@ import "./filenames.scss";
 
 import { FileName } from "./filename";
 
-export class FileNames extends Component {
+type FileNamesProps = {
+	selected_file: number;
+	files: string[];
+};
+
+export class FileNames extends Component<FileNamesProps> {
+	constructor(props: FileNamesProps) {
+		super(props);
+
+		this.state = {};
+	}
+
+	renderFile(filename: string, index: number) {
+		if (this.props.selected_file === index) {
+			return (
+				<FileName selected={true} key={index}>
+					{filename}
+				</FileName>
+			);
+		}
+
+		return (
+			<FileName selected={false} key={index}>
+				{filename}
+			</FileName>
+		);
+	}
+
 	render() {
 		return (
 			<div className="filenames">
-				<FileName>index.jsx</FileName>
-				<FileName>index.css</FileName>
+				{this.props.files.map((filename, index) =>
+					this.renderFile(filename, index)
+				)}
 			</div>
 		);
 	}

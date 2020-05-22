@@ -4,8 +4,11 @@ import jsx from "react-syntax-highlighter/dist/esm/languages/prism/jsx";
 import okaidia from "react-syntax-highlighter/dist/esm/styles/prism/okaidia";
 import "./code_view.scss";
 import { codeString } from "../code_string";
+import { CodeLine } from "./code_line";
 
 SyntaxHighlighter.registerLanguage("jsx", jsx);
+
+const matched: number[] = [1, 2];
 
 export class CodeView extends Component {
 	render() {
@@ -15,6 +18,17 @@ export class CodeView extends Component {
 					showLineNumbers={true}
 					language="jsx"
 					style={okaidia}
+					customStyle={{
+						fontSize: "14px",
+						background: "#22221d",
+					}}
+					wrapLines={true}
+					CodeTag={CodeLine}
+					lineProps={(lineNumber: number) => {
+						return {
+							color: "red",
+						};
+					}}
 				>
 					{codeString}
 				</SyntaxHighlighter>

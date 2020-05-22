@@ -2,7 +2,17 @@ import React, { Component } from "react";
 import "./description.scss";
 import { Step } from "./step";
 
-export class Description extends Component {
+type DescriptionProps = {};
+
+export class Description extends Component<DescriptionProps> {
+	constructor(props: DescriptionProps) {
+		super(props);
+
+		this.state = {
+			selected: 0,
+		};
+	}
+
 	render() {
 		return (
 			<div className="description">
@@ -30,7 +40,7 @@ export class Description extends Component {
 						game.
 					</p>
 				</div>
-				<Step>
+				<Step index={0}>
 					<p className="step-header">Passing Data Through Props</p>
 					<p>
 						To get our feet wet, let’s try passing some data from
@@ -45,6 +55,13 @@ export class Description extends Component {
 					<p>
 						In Board’s renderSquare method, change the code to pass
 						a prop called value to the Square.
+					</p>
+				</Step>
+				<Step index={1}>
+					<p>
+						{`Change Square’s render method to show that value by replacing`}{" "}
+						<code>{`{/* TODO */}`}</code> {`with `}
+						<code>{`{this.props.value}`}</code>}{":"}
 					</p>
 				</Step>
 			</div>

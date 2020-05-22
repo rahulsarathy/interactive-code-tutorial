@@ -9,7 +9,7 @@ export class Preview extends Component {
 			<div className="preview">
 				<div className="toggle-preview">Preview</div>
 				<div className="preview-image">
-					<img src={sudoku} />
+					<img alt="sudoku" src={sudoku} />
 				</div>
 			</div>
 		);
