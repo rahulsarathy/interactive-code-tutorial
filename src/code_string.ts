@@ -1,7 +1,7 @@
 const reactString: string = `class Square extends React.Component {
   render() {
     return (
-      <button className="square">
+      <button className="square" onClick={function() { alert('click'); }}>
         {this.props.value}
       </button>
     );
@@ -60,8 +60,7 @@ class Game extends React.Component {
 ReactDOM.render(
   <Game />,
   document.getElementById('root')
-);
-`;
+);`;
 
 const cssString: string = `body {
   font: 14px "Century Gothic", Futura, sans-serif;

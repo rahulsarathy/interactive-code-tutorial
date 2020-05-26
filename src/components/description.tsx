@@ -4,15 +4,23 @@ import { Step } from "./step";
 
 type DescriptionProps = {};
 
-type DescriptionState = { selected: number };
+type DescriptionState = { selected_step: number };
 
 export class Description extends Component<DescriptionProps, DescriptionState> {
 	constructor(props: DescriptionProps) {
 		super(props);
 
+		this.changeStep = this.changeStep.bind(this);
+
 		this.state = {
-			selected: 0,
+			selected_step: 0,
 		};
+	}
+
+	changeStep(selected_step: number) {
+		this.setState({
+			selected_step,
+		});
 	}
 
 	render() {
@@ -30,8 +38,7 @@ export class Description extends Component<DescriptionProps, DescriptionState> {
 					<p>
 						If you’re going to work on the tutorial in your browser,
 						open this code in a new tab: Starter Code. If you’re
-						going to work on the tutorial locally, instead open{" "}
-						<code>src/index.js</code> in your project folder (you
+						going to work on the tutorial locally, instead open <code>src/index.js</code> in your project folder (you
 						have already touched this file during the setup).
 					</p>
 
@@ -42,7 +49,11 @@ export class Description extends Component<DescriptionProps, DescriptionState> {
 						game.
 					</p>
 				</div>
-				<Step selected={this.state.selected} index={0}>
+				<Step
+					changeStep={this.changeStep}
+					selected={this.state.selected_step}
+					index={0}
+				>
 					<p className="step-header">Passing Data Through Props</p>
 					<p>
 						To get our feet wet, let’s try passing some data from
@@ -59,11 +70,14 @@ export class Description extends Component<DescriptionProps, DescriptionState> {
 						a prop called value to the Square.
 					</p>
 				</Step>
-				<Step selected={this.state.selected} index={1}>
+				<Step
+					changeStep={this.changeStep}
+					selected={this.state.selected_step}
+					index={1}
+				>
 					<p>
-						{`Change Square’s render method to show that value by replacing`}{" "}
-						<code>{`{/* TODO */}`}</code> {`with `}
-						<code>{`{this.props.value}`}</code>}{":"}
+						Change Square’s render method to show that value with
+						<code>{` {this.props.value} `}</code>
 					</p>
 				</Step>
 			</div>
